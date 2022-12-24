@@ -26,6 +26,6 @@ const router = express.Router();
 const userController = require("./controller");
 
 
-
+router.route("/").get(userController.fetchUsers);
 
 module.exports = router;
