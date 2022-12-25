@@ -41,7 +41,8 @@ const userSchema = new mongoose.Schema(
       },
       batch: {
         type: String,
-        required: [true, "batch number is required"]  
+        required: [true, "batch is required"]  
+        
       },
       isrep: {
         type: Boolean,
@@ -49,7 +50,7 @@ const userSchema = new mongoose.Schema(
       },
       department: {
         type: String,
-        required: [true, "batch number is required"]  
+        required: [true, "department is required"]  
       },
       nisehaAbat: {
         type: String,
@@ -77,6 +78,7 @@ const userSchema = new mongoose.Schema(
     
       role:{
         type:String,
+        default:"User"
         
       }
     },
