@@ -48,3 +48,40 @@ exports.createUser = async (req,res, next) =>{
         next(error)
     }
 }
+// get user by id
+exports.getUserById = async (req,res,next) =>{
+    try {
+        const user = await User.getUserById(req.params.id);
+        if(!user){
+            return (new AppError("There is no user by this id.", 400));
+        }
+        // response
+        res.status(200).json({
+            status:"Success",
+            data:{user}
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+// update user info
+exports.updateUser = async (req,res,next) =>{
+    try {
+        const data = req.body;
+        const user = await User.getUserById(req.params.id);
+
+        if(!user){
+            return (new AppError("There is no user by this id.", 400));
+        }
+        await User.updateUser(req.params.id, data);
+     
+        // response
+        res.status(200).json({
+            status:"Success",
+            message: "User updated successfull."
+        })
+        
+    } catch (error) {
+        next(error)
+    }
+}

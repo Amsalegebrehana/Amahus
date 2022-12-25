@@ -27,5 +27,6 @@ const userController = require("./controller");
 
 
 router.route("/").get(userController.fetchUsers).post(userController.createUser);
+router.route("/:id").get(userController.getUserById).patch(userController.updateUser)
 
 module.exports = router;

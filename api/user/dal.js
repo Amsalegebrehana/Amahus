@@ -16,6 +16,7 @@ class User {
             throw error;
         }
     }
+    // get all users
     static async fetchUsers(page, limit){
         
         try {
@@ -29,6 +30,17 @@ class User {
             throw error;
         }
     }
+    // get user by ID
+    static async getUserById(id){
+        try {
+            const user = await UserModel.findById(id);
+            return user;
+
+        } catch (error) {
+            throw error;
+        }
+    }
+    // add user
     static async createUser(data){
         try {
 
@@ -40,6 +52,23 @@ class User {
         } catch (error) {
             throw error
             
+        }
+    }
+    // update users
+    static async updateUser(id,data){
+        try {
+            const newUser = {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                email: data.email,
+                phoneNumber: data.phoneNumber,
+                batch:data.batch,
+                department:data.department
+            }
+            const user = await UserModel.findByIdAndUpdate(id,newUser);
+            return user;
+        } catch (error) {
+            throw error
         }
     }
 }
