@@ -56,12 +56,15 @@ const userSchema = new mongoose.Schema(
         type: String,
         required: false
       },
+      classId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "classSchema" 
+      },
       password: {
         type: String,
         required: [true, "Password is required"],
         minlength: [8, "Password can not be less than 8 characters"],
       },
-  
       passwordConfirm: {
         type: String,
         required: [true, "Password confirm is required"],

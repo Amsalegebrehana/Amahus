@@ -11,6 +11,7 @@ dotenv.config()
 const DB_URI = process.env.MONGO_URI;
 // Configs
 
+
 const configs = require("../configs");
 
 // Connect with DB

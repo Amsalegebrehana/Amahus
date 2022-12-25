@@ -11,7 +11,7 @@
  * create, get all kiflteteri
  * get all kiflat
  * demote by user id -- from kifl teteri to member
- * demote all users
+ * demote all reps
  * 
  * 
  */
