@@ -45,7 +45,7 @@ class Class {
             const data = await ClassModel.findOne({_id: classId});
 
             if(!data) {
-                throw new AppError("No Class with Id " + classId, 400);
+                throw new AppError("No Class with that Id ", 400);
             }
             return data;
         } catch(error) {
@@ -55,11 +55,11 @@ class Class {
 
     static async updateClassById(classId, data) {
         try {
-            const newData = await ClassModel.findByIdAndUpdate(classId, data, {
+            const newClass = await ClassModel.findByIdAndUpdate(classId, data, {
                 new: true
             });
 
-            return newData;
+            return newClass;
         } catch(error) {
             throw error;
         }

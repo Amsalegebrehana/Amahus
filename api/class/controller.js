@@ -42,11 +42,11 @@ exports.createClass = async (req, res, next) => {
         }
 
 
-        const kifel = await Class.createClass(data);
+        const newClass = await Class.createClass(data);
 
         res.status(201).json({
             status:"Success",
-            data:{kifel},
+            data:{newClass},
             message:"New class created",
         });
     } catch (error) {
