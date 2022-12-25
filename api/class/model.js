@@ -20,8 +20,7 @@ const classSchema = new Schema(
         },
         representativeId: {
             type: Schema.Types.ObjectId,
-            ref: "userSchema",
-            required: true
+            ref: "userSchema"
         }
     },
     {

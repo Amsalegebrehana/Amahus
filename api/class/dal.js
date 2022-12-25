@@ -17,7 +17,7 @@ class Class {
         }
     }
 
-    static async totalClasses() {
+    static async classCount() {
         
         try {
             const total = await ClassModel.countDocuments();
@@ -26,6 +26,46 @@ class Class {
             throw error;
         }
     }
+
+    static async createClass(data){
+        try {
+            const classData = await ClassModel.insertMany(data);
+            if(!classData){
+                throw new AppError("There is a field missing", 400);
+            }
+            
+            return classData;
+        } catch(error) {
+            throw error;
+        }
+    }
+
+    static async fetchClassById(classId) {
+        try {
+            const data = await ClassModel.findOne({_id: classId});
+
+            if(!data) {
+                throw new AppError("No Class with Id " + classId, 400);
+            }
+            return data;
+        } catch(error) {
+            throw error;
+        }
+    }
+
+    static async updateClassById(classId, data) {
+        try {
+            const newData = await ClassModel.findByIdAndUpdate(classId, data, {
+                new: true
+            });
+
+            return newData;
+        } catch(error) {
+            throw error;
+        }
+    }
+
+
 }
 
 
