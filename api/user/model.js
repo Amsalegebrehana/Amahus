@@ -62,12 +62,12 @@ const userSchema = new mongoose.Schema(
       },
       password: {
         type: String,
-        required: [true, "Password is required"],
+        // required: [true, "Password is required"],
         minlength: [8, "Password can not be less than 8 characters"],
       },
       passwordConfirm: {
         type: String,
-        required: [true, "Password confirm is required"],
+        // required: [true, "Password confirm is required"],
         validate: {
           validator: function (value) {
             return this.password === value;
@@ -78,13 +78,17 @@ const userSchema = new mongoose.Schema(
       passwordResetToken: String,
       passwordResetExpire: Date,
       passwordChangedAt: Date,
-    
+      classId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "classSchema" 
+      },
       role:{
         type:String,
         default:"User"
         
       }
     },
+    
     {
       writeConcern: {
         w: "majority",
