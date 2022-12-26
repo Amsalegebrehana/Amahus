@@ -26,7 +26,9 @@ const router = express.Router();
 const userController = require("./controller");
 
 
-router.route("/").get(userController.fetchUsers).post(userController.createUser);
-router.route("/:id").get(userController.getUserById).patch(userController.updateUser)
+router.route("/search").get(userController.filterUser);
 
+router.route("/").get(userController.fetchUsers).post(userController.createUser);
+
+router.route("/:id").get(userController.getUserById).patch(userController.updateUser).delete(userController.deleteUser);
 module.exports = router;

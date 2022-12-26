@@ -30,6 +30,26 @@ class User {
             throw error;
         }
     }
+    // filter user
+    static async filterUser(filters){
+        try {
+            // get all users
+            const user = await UserModel.find()
+            // filter users
+            const filteredUser = await user.filter( u=>{
+           
+                let isValid = true;
+                for (let key in filters) {
+             
+                    isValid = isValid && u[key] == filters[key];
+                }
+                return isValid;
+            })
+            return filteredUser;
+        } catch (error) {
+            throw error
+        }
+    }
     // get user by ID
     static async getUserById(id){
         try {
@@ -62,14 +82,24 @@ class User {
                 lastName: data.lastName,
                 email: data.email,
                 phoneNumber: data.phoneNumber,
-                batch:data.batch,
-                department:data.department
+                batch: data.batch,
+                department: data.department
             }
             const user = await UserModel.findByIdAndUpdate(id,newUser);
             return user;
         } catch (error) {
-            throw error
+            throw error;
         }
     }
+    // delete Users
+    static async deleteUser(id){
+        try {
+            await UserModel.findByIdAndDelete(id);
+
+        } catch (error) {
+          throw error;   
+        }
+    }
+    
 }
 module.exports = User;
