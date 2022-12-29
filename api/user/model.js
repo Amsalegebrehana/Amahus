@@ -56,10 +56,6 @@ const userSchema = new mongoose.Schema(
         type: String,
         required: false
       },
-      classId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "classSchema" 
-      },
       password: {
         type: String,
         // required: [true, "Password is required"],
