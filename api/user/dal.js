@@ -77,15 +77,8 @@ class User {
     // update users
     static async updateUser(id,data){
         try {
-            const newUser = {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
-                phoneNumber: data.phoneNumber,
-                batch: data.batch,
-                department: data.department
-            }
-            const user = await UserModel.findByIdAndUpdate(id,newUser);
+       
+            const user = await UserModel.findByIdAndUpdate(id,data);
             return user;
         } catch (error) {
             throw error;
