@@ -40,6 +40,9 @@ const csp = require("helmet-csp");
 const AppError = require("../utils/appError");
 
 
+// Global error handler
+const geh = require("../geh")
+
 // Routers
 //User Routes
 const userRoutes = require("../api/user/router");
@@ -77,6 +80,8 @@ app.use("*", (req, res, next) => {
   );
 });
 
+// Use global error handler
+app.use(geh);
 
 // Export App
 module.exports = app;
